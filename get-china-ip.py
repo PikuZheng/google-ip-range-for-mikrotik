@@ -31,7 +31,7 @@ with codecs.open('china-ip-ranges-ipv4-'+str_update+'.txt', 'w' ,"utf-8") as out
   for ip_range in ipset:
     try:
       if ip_range.version() == 4:
-        print(ip_range.strNormal())
+#        print(ip_range.strNormal())
         output_ipv4.write('/ip fir add add add='+ip_range.strNormal()+' comment="China'+str_update+'" list=dst-use-no-vpn'+"\r\n")
       else:
         output_ipv6.write('/ipv6 fir add add add='+ip_range.strNormal()+' comment="China'+str_update+'" list=dst-use-no-vpn'+"\r\n")
