@@ -18,7 +18,7 @@ jobs:
       - name: execute py script
         run: |
           python get-china-ip.py
+          python get-google-ip-simple.py
       - uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
-          path: china-ip-ranges-*.txt
+          path: "*-ip-ranges*.txt"
