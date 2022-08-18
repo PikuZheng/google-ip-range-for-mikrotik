@@ -19,6 +19,15 @@ jobs:
         run: |
           python get-china-ip.py
           python get-google-ip-simple.py
-      - uses: actions/upload-artifact@v3
+          git config --local user.email "fake@mail.com"
+          git config --local user.name "PikuZheng"
+          git add *-ip-ranges*.txt
+          git commit -m "generate new post from github action" -a
+      - name: push changes
+        uses: ad-m/github-push-action@master
         with:
-          path: "*-ip-ranges*.txt"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+#      - uses: actions/upload-artifact@v3
+#        with:
+#          name: "ip-ranges.zip"
+#          path: "*-ip-ranges*.txt"
