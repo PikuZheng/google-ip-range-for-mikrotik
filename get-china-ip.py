@@ -27,7 +27,7 @@ with closing(requests.get('http://ftp.apnic.net/stats/apnic/delegated-apnic-late
 print ("\b\b\b\b\b\b...done")
 
 print ("translate ip to rsc...", end="")
-with codecs.open('china-ip-ranges-ipv4-'+str_update+'.txt', 'w' ,"utf-8") as output_ipv4, codecs.open('china-ip-ranges-ipv6-'+str_update+'.txt', 'w' ,"utf-8") as output_ipv6:
+with codecs.open('china-ip-ranges-ipv4.txt', 'w' ,"utf-8") as output_ipv4, codecs.open('china-ip-ranges-ipv6.txt', 'w' ,"utf-8") as output_ipv6:
   output_ipv4.write('/ip fir add remove [/ip fir add find comment~"^China20[0-9]*"]'+"\r\n")
   output_ipv6.write('/ipv6 fir add remove [/ipv6 fir add find comment~"^China20[0-9]*"]'+"\r\n")
   for ip_range in ipset:
