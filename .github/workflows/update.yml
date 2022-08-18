@@ -2,7 +2,9 @@ name: Run Script
 
 on:
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 0 * * *'
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,3 +33,10 @@ jobs:
 #        with:
 #          name: "ip-ranges.zip"
 #          path: "*-ip-ranges*.txt"
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 7
+          keep_minimum_runs: 7
