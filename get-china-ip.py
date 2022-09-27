@@ -8,7 +8,7 @@ ipset = IPSet()
 str_update = ""
 
 print ("read ip list from apnic...", end="")
-with closing(requests.get('http://ftp.apnic.net/stats/apnic/delegated-apnic-latest', stream=True)) as r:
+with closing(requests.get('https://github.com/gaoyifan/china-operator-ip/blob/ip-lists/china.txt', stream=True)) as r:
   r.encoding='utf-8'
   content_size = int(r.headers['content-length'])
   response = r.iter_lines()
@@ -17,11 +17,12 @@ with closing(requests.get('http://ftp.apnic.net/stats/apnic/delegated-apnic-late
     total += len(gen_lines)
 #    print("\rread ip list from apnic...%0.1f%%" % (float(total/content_size) * 100) , end='')
     try:
-      l=str(gen_lines).split("|")
-      if (l[1]=="CN" and l[2][0:2]=="ip"):
-        ipset.add(IP( l[3]+"/"+str(int(32-math.log(int(l[4]))/math.log(2))), make_net = True ))
-      elif (l[1]=="apnic"):
-        str_update=l[2]
+#      l=str(gen_lines).split("|")
+#      if (l[1]=="CN" and l[2][0:2]=="ip"):
+#        ipset.add(IP( l[3]+"/"+str(int(32-math.log(int(l[4]))/math.log(2))), make_net = True ))
+#      elif (l[1]=="apnic"):
+#        str_update=l[2]
+      ipset.add(IP(str(gen_lines), make_net = True ))
     except:
       pass
 print ("\b\b\b\b\b\b...done")
