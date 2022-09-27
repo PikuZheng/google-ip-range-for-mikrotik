@@ -8,7 +8,7 @@ ipset = IPSet()
 str_update = ""
 
 print ("read ip list from apnic...", end="")
-with closing(requests.get('https://github.com/gaoyifan/china-operator-ip/blob/ip-lists/china.txt', stream=True)) as r:
+with closing(requests.get('https://github.com/gaoyifan/china-operator-ip/raw/ip-lists/china.txt', stream=True)) as r:
   r.encoding='utf-8'
   content_size = int(r.headers['content-length'])
   response = r.iter_lines()
