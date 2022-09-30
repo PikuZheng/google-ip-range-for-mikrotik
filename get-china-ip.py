@@ -3,7 +3,6 @@ import codecs
 from contextlib import closing
 import datetime
 
-ipset = IPSet()
 str_update = datetime.datetime.now().strftime('%Y-%m-%d')
 
 print ("read ip list from github...", end="")
@@ -25,6 +24,7 @@ with closing(requests.get('https://github.com/gaoyifan/china-operator-ip/raw/ip-
   output_ipv6.write('/ipv6 fir add remove [/ipv6 fir add find comment~"^China20[0-9]*"]'+"\r\n")
   for ip_range in response:
     try:
+#        print(ip_range.strNormal())
         output_ipv6.write('/ipv6 fir add add add='+ip_range.strNormal()+' comment="China'+str_update+'" list=dst-use-no-vpn'+"\r\n")
     except:
       pass
