@@ -12,7 +12,7 @@ jobs:
       shell: bash
       run: |
         sudo apt-get update
-        sudo apt-get install -y libjitterentropy-dev
+        sudo apt-get install -y ibjitterentropy3-dev
         set -x
 
         uname -a
