@@ -14,6 +14,8 @@ jobs:
         apt-cache policy
         apt-cache policy libjitterentropy3-dev
         grep -h ^deb /etc/apt/sources.list /etc/apt/sources.list.d/*.list 2>/dev/null
+        sudo apt-get update
+        sudo apt-get install -y libjitterentropy3-dev |true
         wget http://archive.ubuntu.com/ubuntu/pool/universe/j/jitterentropy-library/libjitterentropy3-dev_3.6.3-1_amd64.deb
         sudo apt install ./libjitterentropy3-dev_3.6.3-1_amd64.deb
         set -x
